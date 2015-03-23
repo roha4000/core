@@ -73,6 +73,9 @@ function revertFile(file, revision) {
 			} else {
 				$('#dropdown').hide('blind', function() {
 					$('#dropdown').closest('tr').find('.modified:first').html(relative_modified_date(revision));
+					//trigger reload of thumbnail
+					//TODO - refresh thumbnail
+					//$('#dropdown').closest('tr').find('.thumbnail:first').css('background-image');
 					$('#dropdown').remove();
 					$('tr').removeClass('mouseOver');
 				});
