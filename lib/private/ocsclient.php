@@ -111,7 +111,7 @@ class OCSClient {
 		}
 
 		$loadEntities = libxml_disable_entity_loader(true);
-		$data = simplexml_load_string($response->getBody());
+		$data = @simplexml_load_string($response->getBody());
 		libxml_disable_entity_loader($loadEntities);
 
 		if($data === false) {
@@ -175,7 +175,7 @@ class OCSClient {
 		}
 
 		$loadEntities = libxml_disable_entity_loader(true);
-		$data = simplexml_load_string($response->getBody());
+		$data = @simplexml_load_string($response->getBody());
 		libxml_disable_entity_loader($loadEntities);
 
 		if($data === false) {
@@ -256,7 +256,7 @@ class OCSClient {
 		}
 
 		$loadEntities = libxml_disable_entity_loader(true);
-		$data = simplexml_load_string($response->getBody());
+		$data = @simplexml_load_string($response->getBody());
 		libxml_disable_entity_loader($loadEntities);
 
 		if($data === false) {
@@ -320,7 +320,7 @@ class OCSClient {
 		}
 
 		$loadEntities = libxml_disable_entity_loader(true);
-		$data = simplexml_load_string($response->getBody());
+		$data = @simplexml_load_string($response->getBody());
 		libxml_disable_entity_loader($loadEntities);
 
 		if($data === false) {
