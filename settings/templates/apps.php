@@ -23,6 +23,9 @@
 	{{/if}}
 	<h2 class="app-name"><a href="{{detailpage}}" target="_blank">{{name}}</a></h2>
 	<div class="app-version"> {{version}}</div>
+	<div class="app-level">
+		{{{level}}}
+	</div>
 	<div class="app-author"><?php p($l->t('by')); ?> {{author}}
 		{{#if licence}}
 		({{licence}}-<?php p($l->t('licensed')); ?>)
@@ -95,8 +98,35 @@
 	<ul id="apps-categories">
 
 	</ul>
+	<div id="app-settings">
+		<div id="app-settings-header">
+			<button class="settings-button" data-apps-slide-toggle="#app-settings-content"></button>
+		</div>
+
+		<div id="app-settings-content" style="color: #c33">
+			<input type="checkbox" id="enable-experimental-apps">
+			<label for="enable-experimental-apps"><?php p($l->t('Enable experimental apps')) ?></label>
+			<p>
+				<small>
+					<?php p($l->t('Experimental apps are created by the ownCloud ' .
+						'community and have not received any official testing. By ' .
+						'enabling experimental applications you may experience data ' .
+						'loss or install potential insecure or malicious software.')) ?>
+				</small>
+			</p>
+		</div>
+	</div>
 </div>
 <div id="app-content">
+	<div style="background-color: lightyellow; border-top:1px solid black; border-bottom:  1px solid black;">
+		<h2><?php p($l->t('Experimental applications ahead')) ?></h2>
+		<p>
+			<?php p($l->t('Experimental apps are created by the ownCloud ' .
+				'community and have not received any official testing. By ' .
+				'enabling experimental applications you may experience data ' .
+				'loss or install potential insecure or malicious software.')) ?>
+		</p>
+	</div>
 	<div id="apps-list" class="icon-loading"></div>
 	<div id="apps-list-empty" class="hidden emptycontent">
 		<div class="icon-search"></div>

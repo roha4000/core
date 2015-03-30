@@ -77,10 +77,15 @@ class AppSettingsController extends Controller {
 			['id' => 1, 'displayName' => (string)$this->l10n->t('Not enabled')],
 		];
 
-		if(OCSClient::isAppStoreEnabled()) {
-			$categories[] = ['id' => 2, 'displayName' => (string)$this->l10n->t('Recommended')];
+		$ocsClient = new OCSClient(
+			\OC::$server->getHTTPClientService(),
+			\OC::$server->getConfig(),
+			\OC::$server->getLogger()
+		);
+
+		if($ocsClient->isAppStoreEnabled()) {
 			// apps from external repo via OCS
-			$ocs = OCSClient::getCategories();
+			$ocs = $ocsClient->getCategories();
 			if ($ocs) {
 				foreach($ocs as $k => $v) {
 					$categories[] = array(
@@ -97,7 +102,8 @@ class AppSettingsController extends Controller {
 	}
 
 	/**
-	 * Get all available categories
+	 * Get all available apps in a category
+	 *
 	 * @param int $category
 	 * @return array
 	 */
@@ -134,16 +140,7 @@ class AppSettingsController extends Controller {
 					});
 					break;
 				default:
-					if ($category === 2) {
-						$apps = \OC_App::getAppstoreApps('approved');
-						if ($apps) {
-							$apps = array_filter($apps, function ($app) {
-								return isset($app['internalclass']) && $app['internalclass'] === 'recommendedapp';
-							});
-						}
-					} else {
-						$apps = \OC_App::getAppstoreApps('approved', $category);
-					}
+					$apps = \OC_App::getAppstoreApps('approved', $category);
 					if (!$apps) {
 						$apps = array();
 					} else {

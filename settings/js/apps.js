@@ -9,6 +9,17 @@ Handlebars.registerHelper('score', function() {
 	}
 	return new Handlebars.SafeString('');
 });
+Handlebars.registerHelper('level', function() {
+	if(this.level) {
+		if(this.level === 200) {
+			return new Handlebars.SafeString('<span class="official">Official</span>');
+		} else if(this.level === 100) {
+			return new Handlebars.SafeString('<span class="official">Approved</span>');
+		} else {
+			return new Handlebars.SafeString('<span class="experimental">Experimental</span>');
+		}
+	}
+});
 
 OC.Settings = OC.Settings || {};
 OC.Settings.Apps = OC.Settings.Apps || {
