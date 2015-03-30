@@ -23,9 +23,6 @@
 	{{/if}}
 	<h2 class="app-name"><a href="{{detailpage}}" target="_blank">{{name}}</a></h2>
 	<div class="app-version"> {{version}}</div>
-	<div class="app-level">
-		{{{level}}}
-	</div>
 	<div class="app-author"><?php p($l->t('by')); ?> {{author}}
 		{{#if licence}}
 		({{licence}}-<?php p($l->t('licensed')); ?>)
@@ -34,9 +31,9 @@
 	{{#if score}}
 	<div class="app-score">{{{score}}}</div>
 	{{/if}}
-	{{#if internalclass}}
-	<div class="{{internalclass}} icon-checkmark">{{internallabel}}</div>
-	{{/if}}
+	<div class="app-level">
+		{{{level}}}
+	</div>
 	<div class="app-detailpage"></div>
 
 	<div class="app-description-container hidden">
@@ -103,7 +100,7 @@
 			<button class="settings-button" data-apps-slide-toggle="#app-settings-content"></button>
 		</div>
 
-		<div id="app-settings-content" style="color: #c33">
+		<div id="app-settings-content" style="color: #ce3702">
 			<input type="checkbox" id="enable-experimental-apps">
 			<label for="enable-experimental-apps"><?php p($l->t('Enable experimental apps')) ?></label>
 			<p>
